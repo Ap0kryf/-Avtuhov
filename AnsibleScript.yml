@@ -35,10 +35,12 @@
         - name: SSH-port 1834
           shell: |
             sed -i 's/#Port 22/Port 1834/g' /etc/ssh/sshd_config
-        - name: Add users
-          user: name={{ skillcloud.users[0]}} shell=/bin/bash
-          user: name={{ skillcloud.users[1]}} shell=/bin/bash
-          user: name={{ skillcloud.users[2]}} shell=/bin/bash
+        - name: Add user {{ skillcloud.users[0] }}
+          user: name={{ skillcloud.users[0]}} password={{skillcloud.passwords[0]}} shell=/bin/bash
+        - name: Add user {{ skillcloud.users[1] }}
+          user: name={{ skillcloud.users[1]}} password={{skillcloud.passwords[1]}} shell=/bin/bash
+        - name: Add user {{ skillcloud.users[2] }}
+          user: name={{ skillcloud.users[2] }} password={{skillcloud.passwords[2]}} shell=/bin/bash
         - name: Pubkeys add
           shell: |
              sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/g' /etc/ssh/sshd_config     
@@ -78,5 +80,5 @@
           service:
            name: ufw
            state: restarted
-        - name: Reboot
-          reboot:
+#        - name: Reboot
+ #         reboot:
