@@ -80,5 +80,5 @@
           service:
            name: ufw
            state: restarted
-#        - name: Reboot
- #         reboot:
+        - name: Reboot
+          reboot:
