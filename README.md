@@ -1,0 +1,1 @@
+To start, first set the correct IP addresses in the hosts file. Then change the ssh port from 1834 to 22. Then write the ansible-playbook AnsibleScript.yml command. After the first run, change the ports back to 1834. Run the script again
